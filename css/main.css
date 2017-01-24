@@ -138,7 +138,6 @@ span {
   background-image: url("../images/downvote-hover.svg");
 }
 
-
 @media screen and (min-width: 700px) {
   #title-input,
   #body-input,
@@ -148,7 +147,6 @@ span {
     width: 50%;
   }
 }
-
 
 @media screen and (max-width: 500px){
   .inputs-go-here {
