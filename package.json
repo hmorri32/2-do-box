@@ -1,10 +1,11 @@
 {
   "name": "2-do-box",
   "version": "1.0.0",
-  "description": "",
   "main": "scripts.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --hot --inline",
+    "build": "webpack",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -17,10 +18,17 @@
   },
   "homepage": "https://github.com/hmorri32/2-do-box#readme",
   "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
     "chai": "^3.5.0",
+    "css-loader": "^0.26.1",
     "mocha": "^3.2.0",
     "mocha-loader": "^1.1.0",
+    "node-sass": "^4.3.0",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"
-  }
+  },
+  "description": ""
 }
