@@ -45,7 +45,11 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var Scripts = __webpack_require__(1);
+<<<<<<< HEAD
 	var Styles = __webpack_require__(2);
+=======
+	// var Styles = require ('./styles.scss');
+>>>>>>> 0bc293ecc57478130fe6ff4350b73079444b28ec
 
 /***/ },
 /* 1 */
@@ -227,6 +231,7 @@
 	  });
 	});
 
+<<<<<<< HEAD
 /***/ },
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
@@ -575,5 +580,7 @@
 	}
 
 
+=======
+>>>>>>> 0bc293ecc57478130fe6ff4350b73079444b28ec
 /***/ }
 /******/ ]);
