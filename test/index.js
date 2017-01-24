@@ -4,6 +4,4 @@ describe('idea box', function () {
   it('should work', function () {
     assert(true)
     })
-
-
   })
