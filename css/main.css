@@ -2,7 +2,7 @@ html, body {
   font-family: 'Open-Sans', sans-serif; }
 
 *:focus {
-  outline: none;
+  /*outline: none;*/
 }
 
 h1,
