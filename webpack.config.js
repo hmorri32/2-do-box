@@ -1,6 +1,8 @@
 const path = require('path');
 
+
 module.exports = {
+
   entry: {
     main: "./lib/index.js",
     test: "mocha!./test/index.js"
@@ -18,5 +20,14 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.json', '.scss', '.css']
+  },
+  node: {
+    module: "empty",
+    fs: "empty",
+    net: "empty",
+    "child_process": "empty"
+
   }
+
+
 }
