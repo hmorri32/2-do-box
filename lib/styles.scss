@@ -1,4 +1,25 @@
-$primary-text-color: #F00;
+// @import "variables";
+
+// If we want to make a variable files
+
+
+// Mixins are defined with an @.. so, @mixin whatever-name {}
+// p { @include whatever-name;}
+
+// current color pallette
+// #045E55;
+// #00a79D;
+// #e5f3f2;
+// #6D6E71;
+// #939598;
+// #D1D3D4;
+// #FFFFFF;
+
+
+
+$primary: #F00;
+
+
 
 body {
   color: $primary-text-color
