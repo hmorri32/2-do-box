@@ -44,6 +44,8 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	var Scripts = __webpack_require__(1);
 	// var Styles = require ('./styles.scss');
 
@@ -51,22 +53,23 @@
 /* 1 */
 /***/ function(module, exports) {
 
+	"use strict";
+
 	// Global Var - Local Storage Array
 	var ideaTank = JSON.parse(localStorage.getItem("savedArrayObject")) || [];
 
 	// Grabs local storage stuff on load. Appends it. Clears inputs.
 	$(document).ready(function () {
-	  getLocalStorageThenAppendIt();
 	  console.log(localStorage);
+	  appendFromLocalStorage();
 	  resetInputs();
 	});
 
 	// Helper functions
-	getLocalStorageThenAppendIt = function () {
-	  for (i = 0; i < ideaTank.length; i++) {
-	    var idea = ideaTank[i];
-	    createIdea(idea);
-	  }
+	function appendFromLocalStorage() {
+	  ideaTank.forEach(function (object) {
+	    createIdea(object);
+	  });
 	};
 
 	function enableSaveButton() {
@@ -84,41 +87,49 @@
 
 	function upvoteButton(quality) {
 	  switch (quality) {
-	    case 'swill':
-	      return 'plausible';
-	    case 'plausible':
-	      return 'genius';
+	    case 'none':
+	      return 'low';
+	    case 'low':
+	      return 'normal';
+	    case 'normal':
+	      return 'high';
+	    case 'high':
+	      return 'critical';
 	    default:
-	      return 'genius';
+	      return 'critical';
 	  }
 	};
 
 	function downvoteButton(quality) {
 	  switch (quality) {
-	    case 'genius':
-	      return 'plausible';
-	    case 'plausible':
-	      return 'swill';
+	    case 'critical':
+	      return 'high';
+	    case 'high':
+	      return 'normal';
+	    case 'normal':
+	      return 'low';
+	    case 'low':
+	      return 'none';
 	    default:
-	      return 'swill';
+	      return 'none';
 	  }
 	};
 
 	// alter value helper, works for quality buttons and inputs
-	function alterValueAndStoreIt(id, arrayValue, inputValue) {
-	  for (i = 0; i < ideaTank.length; i++) {
-	    if (Number(id) === ideaTank[i].id) {
-	      ideaTank[i][arrayValue] = inputValue;
-	      storeNewIdea();
+	function updateInLocalStorage(divId, arrayValue, inputValue) {
+	  ideaTank.forEach(function (element) {
+	    if (Number(divId) === element.id) {
+	      element[arrayValue] = inputValue;
+	      sendToLocalStorage();
 	    }
-	  }
+	  });
 	};
 
 	// Constructor stuff
 	function newIdeaFactory(title, body) {
 	  this.title = title;
 	  this.body = body;
-	  this.quality = 'swill';
+	  this.quality = 'none';
 	  this.id = Date.now();
 	};
 
@@ -130,36 +141,20 @@
 	  var idea = new newIdeaFactory(title, body);
 	  createIdea(idea);
 	  ideaTank.push(idea);
-	  storeNewIdea(idea);
+	  sendToLocalStorage(idea);
 	};
 
-	storeNewIdea = function () {
+	sendToLocalStorage = function sendToLocalStorage() {
 	  localStorage.setItem("savedArrayObject", JSON.stringify(ideaTank));
 	};
 
 	function createIdea(newIdeaFactory) {
-	  $('.ideas').prepend(`<div id=${newIdeaFactory.id} class="new-ideas">
-	      <div class="idea-header">
-	        <h2 class ="idea-title" contentEditable="true">${newIdeaFactory.title}
-	          <button class="delete"></button>
-	        </h2>
-	      </div>
-	      <div class="idea-body">
-	        <p class="body" contentEditable="true"> ${newIdeaFactory.body}</p>
-	      </div>
-	      <div class="footer">
-	        <button class="up"></button>
-	        <button class="down"></button>
-	        <div class="idea-quality"><span>quality:</span> <span class="quality">${newIdeaFactory.quality}</span></div>
-	      </div>
-	    </div>`);
+	  $('.ideas').prepend("<div id=" + newIdeaFactory.id + " class=\"new-ideas\">\n      <div class=\"idea-header\">\n        <h2 class =\"idea-title\" contentEditable=\"true\">" + newIdeaFactory.title + "\n          <button class=\"delete\"></button>\n        </h2>\n      </div>\n      <div class=\"idea-body\">\n        <p class=\"body\" contentEditable=\"true\"> " + newIdeaFactory.body + "</p>\n      </div>\n      <div class=\"footer\">\n        <button class=\"up\"></button>\n        <button class=\"down\"></button>\n        <div class=\"idea-quality\"><span tabindex=\"0\">importance:</span> <span tabindex=\"0\" class=\"quality\">" + newIdeaFactory.quality + "</span></div>\n      </div>\n    </div>");
 	};
 
 	// Event Listeners
 	$('#title-input, #body-input').on('keyup', function () {
-	  var titleInput = $('#title-input').val();
-	  var bodyInput = $('#body-input').val();
-	  if (titleInput.length >= 1 && bodyInput.length >= 1) {
+	  if ($('#title-input').val() && $('#body-input').val()) {
 	    enableSaveButton();
 	  } else {
 	    disableSaveButton();
@@ -175,13 +170,25 @@
 	$('.ideas').on('click', '.delete', function () {
 	  $(this).closest('.new-ideas').remove();
 	  var divId = $(this).closest('.new-ideas').prop('id');
-	  for (i = 0; i < ideaTank.length; i++) {
+	  for (var i = 0; i < ideaTank.length; i++) {
 	    if (Number(divId) === ideaTank[i].id) {
 	      ideaTank.splice(i, 1);
-	      storeNewIdea();
+	      sendToLocalStorage();
 	    }
 	  }
 	});
+
+	// Doesnt work. Deletes everything.
+	// $('.ideas').on('click', '.delete', function() {
+	//   $(this).closest('.new-ideas').remove();
+	//   var divId = $(this).closest('.new-ideas').prop('id')
+	//   ideaTank.forEach(function (element){
+	//     ideaTank.find(function(divId){
+	//       ideaTank.splice(divId, 1);
+	//       sendToLocalStorage();
+	//     })
+	//   })
+	// });
 
 	$('.ideas').on('click', '.up', function () {
 	  var ideaQuality = $(this).closest('.new-ideas').find('.quality');
@@ -189,7 +196,7 @@
 	  var upVotedText = upvoteButton(ideaQualityVal);
 	  ideaQuality.text(upVotedText);
 	  var divId = $(this).closest('.new-ideas').prop('id');
-	  alterValueAndStoreIt(divId, "quality", upVotedText);
+	  updateInLocalStorage(divId, "quality", upVotedText);
 	});
 
 	$('.ideas').on('click', '.down', function () {
@@ -198,21 +205,21 @@
 	  var downvotedText = downvoteButton(ideaQualityVal);
 	  ideaQuality.text(downvotedText);
 	  var divId = $(this).closest('.new-ideas').prop('id');
-	  alterValueAndStoreIt(divId, "quality", downvotedText);
+	  updateInLocalStorage(divId, "quality", downvotedText);
 	});
 
 	$('.ideas').on('blur', '.idea-title', function () {
 	  var ideaTitle = $(this).closest('.idea-title');
 	  var ideaTitleValue = ideaTitle.text();
 	  var divId = $(this).closest('.new-ideas').prop('id');
-	  alterValueAndStoreIt(divId, "title", ideaTitleValue);
+	  updateInLocalStorage(divId, "title", ideaTitleValue);
 	});
 
 	$('.ideas').on('blur', '.body', function () {
 	  var ideaBody = $(this).closest('.body');
 	  var ideaBodyValue = ideaBody.text();
 	  var divId = $(this).closest('.new-ideas').prop('id');
-	  alterValueAndStoreIt(divId, "body", ideaBodyValue);
+	  updateInLocalStorage(divId, "body", ideaBodyValue);
 	});
 
 	// Search
