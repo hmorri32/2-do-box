@@ -123,8 +123,9 @@ span {
 }
 
 .idea-quality {
+  margin-left: 10px;
   display: inline-block;
-  vertical-align: super;
+  vertical-align: inherit;
   font-size: 20px;
 }
 
@@ -156,6 +157,7 @@ span {
   background: transparent;
   border-radius: 50%;
   border: 1px solid $secondary-color;
+  vertical-align: super;
   // background-image: url("../images/upvote.svg");
 }
 
@@ -171,6 +173,7 @@ span {
   background: transparent;
   border-radius: 50%;
   border: 1px solid $secondary-color;
+  vertical-align: super;
   // background-image: url("../images/downvote.svg");
 }
 
@@ -180,6 +183,21 @@ span {
   // background-image: url("../images/downvote-hover.svg");
 }
 
+.complete {
+  height: 30px;
+  background: transparent;
+  border-radius: 30%;
+  border: 1px solid $secondary-color;
+  vertical-align: super;
+  float: right;
+  color: #6D6E71;
+
+}
+
+.complete:hover {
+  background-color: $primary-background;
+  cursor: pointer;
+}
 
 @media screen and (min-width: 700px) {
   #title-input,
