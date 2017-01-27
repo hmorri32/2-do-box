@@ -1,5 +1,9 @@
 // @import "variables";
 
+
+
+
+
 // If we want to make a variable files
 
 
@@ -20,10 +24,177 @@ $secondary-color: #00a79D;
 $primary-background: #e5f3f2;
 $main-color: #6D6E71;
 $line-color: #D1D3D4;
-$secondary-background: #FFF;
+$secondary-background: #FFFFFF;
 
 
 // SVG loader
 
+html, body {
+  font-family: 'Open-Sans', sans-serif; }
 
-$top-section-backround: #e5f3f2;
+*:focus {
+  /*outline: none;*/
+}
+
+h1,
+h2,
+span {
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+}
+
+.quality {
+ font-weight: 400;
+}
+
+.inputs-go-here {
+  width: 100%;
+  height: 220px;
+  background-color: #e5f3f2;
+}
+
+.inputs-go-here h1 {
+  display: inline-block;
+  color: #00a79d;
+  font-size: 50px;
+}
+
+.input-h1 {
+  text-align: center;
+  padding: 20px;
+}
+
+#header-box-text {
+  color: #6D6E71;
+}
+
+.inputs-go-here input,
+.inputs-go-here button,
+.inputs-go-here textarea,
+.ideas-go-here input {
+ display: block;
+ width: 75%;
+ height: 20px;
+ margin: auto;
+ margin-bottom: 20px;
+ border: 1px solid #D1D3D4;
+}
+
+#body-input {
+ resize: none;
+}
+
+#save-button {
+ background-color: #00A79D;
+ color: #FFFFFF;
+}
+
+#save-button:hover {
+  background-color: #045E55;
+}
+
+#save-button:disabled {
+  background-color: #00A79D
+}
+
+#live-search-ideas {
+ margin-top: 20px;
+}
+
+.new-ideas {
+  display: block;
+  width: 75%;
+  margin: auto;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #D1D3D4;
+  color: #6D6E71;
+}
+
+.new-ideas h2 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.new-ideas p {
+  margin-bottom: 10px;
+  color: #939598;
+}
+
+.idea-quality {
+  display: inline-block;
+  vertical-align: super;
+  font-size: 20px;
+}
+
+.footer {
+  margin-bottom: 10px;
+}
+
+.delete {
+  display: inline-block;
+  float: right;
+  height: 30px;
+  width: 30px;
+  vertical-align: top;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid $secondary-color;
+  // background-image: url("../images/delete.svg");
+}
+
+.delete:hover {
+  background-color: $primary-background;
+  cursor: pointer;
+  // background-image: url("../images/delete-hover.svg");
+}
+
+.up {
+  height: 30px;
+  width: 30px;
+  background: transparent;
+  border-radius: 50%;
+  border: 1px solid $secondary-color;
+  // background-image: url("../images/upvote.svg");
+}
+
+.up:hover {
+  background-color: $primary-background;
+  cursor: pointer;
+  // background-image: url("../images/upvote-hover.svg");
+}
+
+.down {
+  height: 30px;
+  width: 30px;
+  background: transparent;
+  border-radius: 50%;
+  border: 1px solid $secondary-color;
+  // background-image: url("../images/downvote.svg");
+}
+
+.down:hover {
+  background-color: $primary-background;
+  cursor: pointer;
+  // background-image: url("../images/downvote-hover.svg");
+}
+
+
+@media screen and (min-width: 700px) {
+  #title-input,
+  #body-input,
+  #save-button,
+  #live-search-ideas,
+  .new-ideas {
+    width: 50%;
+  }
+}
+
+
+@media screen and (max-width: 500px){
+  .inputs-go-here {
+    height: 250px;
+  }
+  #body-input {
+    height: 55px;
+  }
+}
