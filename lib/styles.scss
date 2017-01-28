@@ -124,6 +124,23 @@ span {
   }
 }
 
+.completed {
+  background-color: lighten($p-color, 30%);
+  h2,
+  p,
+  span,
+  .complete {
+    text-decoration: line-through;
+  }
+  button {
+    border: 1px solid $main-color;
+    &:hover {
+      cursor: default;
+      background-color: lighten($p-color, 30%);
+    }
+  }
+}
+
 
 @media screen and (min-width: 700px) {
   #title-input,
