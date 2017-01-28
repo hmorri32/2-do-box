@@ -16,24 +16,26 @@ describe('2-Do-box test bruu', function() {
   test.afterEach(()=>{
     driver.quit();
   })
-  
 
-  test.it('should allow me to add a title and a task', function() {
+
+  test.it('should allow me to add a title', function() {
 
     const title = driver.findElement({id: "title-input"});
-    const task = driver.findElement({id: "body-input"});
 
     title.sendKeys("supsies").then(()=> { return title.getAttribute('value')}).then((value)=> {
       assert.equal(value, "supsies")
     });
-    task.sendKeys("bra").then(()=> { return task.getAttribute('value')}).then((value) => {
-      assert.equal(value, "bra")
-    })
   });
 
-  test.it('should allow me to add ideas to the dom', function() {
+  test.it('should allow me to add a task', function() {
+    
+    const task = driver.findElement({id: "body-input"});
 
-  })
+    task.sendKeys("brah").then(()=> { return task.getAttribute('value')}).then((value) => {
+      assert.equal(value, "brah")
+    });
+  });
+
 });
 
 
