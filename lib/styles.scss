@@ -1,35 +1,9 @@
-// @import "variables";
-
-
-
-
-
-// If we want to make a variable files
-
 
 // Mixins are defined with an @.. so, @mixin whatever-name {}
 // p { @include whatever-name;}
 
-// current color pallette
-// #045E55;
-// #00a79D;
-// #e5f3f2;
-// #6D6E71;
-// #939598;
-// #D1D3D4;
-// #FFFFFF;
 
-$primary-color: #045E55;
-$secondary-color: #00a79D;
-$primary-background: #e5f3f2;
-$main-color: #6D6E71;
-$line-color: #D1D3D4;
-$secondary-background: #FFFFFF;
-
-$main-font: "Open-Sans", sans-serif;
-$roboto-font: "Roboto Slab", serif;
-
-
+@import 'variables';
 
 // SVG loader
 
@@ -56,15 +30,12 @@ span {
   width: 100%;
   height: 220px;
   background-color: $primary-background;
+  h1 {
+    display: inline-block;
+    color: $secondary-color;
+    font-size: 50px;
+  }
 }
-
-.inputs-go-here h1 {
-  display: inline-block;
-  color: $secondary-color;
-  font-size: 50px;
-}
-
-
 
 .input-h1 {
   text-align: center;
@@ -92,18 +63,16 @@ span {
 }
 
 #save-button {
- background-color: #00A79D;
- color: #FFFFFF;
-}
-
-#save-button:hover {
-  background-color: #045E55;
-}
-
-#save-button:disabled {
-  border: 1px solid $primary-color;
-  color: $primary-color;
-  background-color: #FFFFFF;
+  background-color: #00A79D;
+  color: #FFFFFF;
+  &:hover {
+    background-color: #045E55;
+  }
+  &:disabled {
+    border: 1px solid $primary-color;
+    color: $primary-color;
+    background-color: #FFFFFF;
+  }
 }
 
 #live-search-ideas {
@@ -117,16 +86,14 @@ span {
   margin-bottom: 30px;
   border-bottom: 1px solid #D1D3D4;
   color: #6D6E71;
-}
-
-.new-ideas h2 {
-  font-size: 30px;
-  margin-bottom: 10px;
-}
-
-.new-ideas p {
-  margin-bottom: 10px;
-  color: #939598;
+  h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  p {
+    margin-bottom: 10px;
+    color: #939598;
+  }
 }
 
 .idea-quality {
@@ -149,14 +116,12 @@ span {
   border-radius: 50%;
   background: transparent;
   border: 1px solid $secondary-color;
-  // background-image: url("../images/delete.svg");
+  &:hover {
+    background-color: $primary-background;
+    cursor: pointer;
+  }
 }
 
-.delete:hover {
-  background-color: $primary-background;
-  cursor: pointer;
-  // background-image: url("../images/delete-hover.svg");
-}
 
 .up {
   height: 30px;
@@ -165,13 +130,10 @@ span {
   border-radius: 50%;
   border: 1px solid $secondary-color;
   vertical-align: super;
-  // background-image: url("../images/upvote.svg");
-}
-
-.up:hover {
-  background-color: $primary-background;
-  cursor: pointer;
-  // background-image: url("../images/upvote-hover.svg");
+  &:hover {
+    background-color: $primary-background;
+    cursor: pointer;
+  }
 }
 
 .down {
@@ -181,13 +143,10 @@ span {
   border-radius: 50%;
   border: 1px solid $secondary-color;
   vertical-align: super;
-  // background-image: url("../images/downvote.svg");
-}
-
-.down:hover {
-  background-color: $primary-background;
-  cursor: pointer;
-  // background-image: url("../images/downvote-hover.svg");
+  &:hover {
+    background-color: $primary-background;
+    cursor: pointer;
+  }
 }
 
 .complete {
@@ -198,12 +157,12 @@ span {
   vertical-align: super;
   float: right;
   color: #6D6E71;
+  &:hover {
+    background-color: $primary-background;
+    cursor: pointer;
+  }
 }
 
-.complete:hover {
-  background-color: $primary-background;
-  cursor: pointer;
-}
 
 @media screen and (min-width: 700px) {
   #title-input,
