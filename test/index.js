@@ -16,7 +16,7 @@ describe('2-Do-box test bruu', function() {
   test.afterEach(()=>{
     driver.quit();
   })
-
+  
 
   test.it('should allow me to add a title and a task', function() {
 
@@ -32,7 +32,7 @@ describe('2-Do-box test bruu', function() {
   });
 
   test.it('should allow me to add ideas to the dom', function() {
-    
+
   })
 });
 

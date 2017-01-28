@@ -7,7 +7,7 @@
 // #D1D3D4;
 // #FFFFFF;
 
-
+// Colors
 $primary-color: #045E55;
 $secondary-color: #00a79D;
 $primary-background: #e5f3f2;
@@ -16,8 +16,14 @@ $line-color: #D1D3D4;
 $p-color: #939598;
 $secondary-background: #FFFFFF;
 
+// font styles
 $main-font: "Open-Sans", sans-serif;
 $roboto-font: "Roboto Slab", serif;
+
+// font weights
+$regular: 400;
+$bold: 700;
+
 
 @mixin input-sizing {
   display: block;
