@@ -1,62 +1,25 @@
-// @import "variables";
-
-
-
-
-
-// If we want to make a variable files
-
-
-// Mixins are defined with an @.. so, @mixin whatever-name {}
-// p { @include whatever-name;}
-
-// current color pallette
-// #045E55;
-// #00a79D;
-// #e5f3f2;
-// #6D6E71;
-// #939598;
-// #D1D3D4;
-// #FFFFFF;
-
-$primary-color: #045E55;
-$secondary-color: #00a79D;
-$primary-background: #e5f3f2;
-$main-color: #6D6E71;
-$line-color: #D1D3D4;
-$secondary-background: #FFFFFF;
-
-
-// SVG loader
+@import 'variables';
 
 html, body {
-  font-family: 'Open-Sans', sans-serif; }
-
-*:focus {
-  /*outline: none;*/
+  font-family: $main-font;
 }
 
 h1,
 h2,
 span {
-  font-family: "Roboto Slab", serif;
-  font-weight: 700;
-}
-
-.quality {
- font-weight: 400;
+  font-family: $roboto-font;
+  font-weight: $bold;
 }
 
 .inputs-go-here {
   width: 100%;
   height: 220px;
-  background-color: #e5f3f2;
-}
-
-.inputs-go-here h1 {
-  display: inline-block;
-  color: #00a79d;
-  font-size: 50px;
+  background-color: $primary-background;
+  h1 {
+    display: inline-block;
+    color: $secondary-color;
+    font-size: 50px;
+  }
 }
 
 .input-h1 {
@@ -65,40 +28,35 @@ span {
 }
 
 #header-box-text {
-  color: #6D6E71;
+  color: $main-color;
 }
 
 .inputs-go-here input,
 .inputs-go-here button,
 .inputs-go-here textarea,
 .ideas-go-here input {
- display: block;
- width: 75%;
- height: 20px;
- margin: auto;
- margin-bottom: 20px;
- border: 1px solid #D1D3D4;
+  @include input-sizing;
 }
 
 #body-input {
- resize: none;
+  resize: none;
 }
 
 #save-button {
- background-color: #00A79D;
- color: #FFFFFF;
-}
-
-#save-button:hover {
-  background-color: #045E55;
-}
-
-#save-button:disabled {
-  background-color: #00A79D
+  background-color: $secondary-color;
+  color: $secondary-background;
+  &:hover {
+    background-color: $primary-color;
+  }
+  &:disabled {
+    border: 1px solid $primary-color;
+    color: $primary-color;
+    background-color: $secondary-background;
+  }
 }
 
 #live-search-ideas {
- margin-top: 20px;
+  margin-top: 20px;
 }
 
 .new-ideas {
@@ -106,24 +64,28 @@ span {
   width: 75%;
   margin: auto;
   margin-bottom: 30px;
-  border-bottom: 1px solid #D1D3D4;
-  color: #6D6E71;
-}
-
-.new-ideas h2 {
-  font-size: 30px;
-  margin-bottom: 10px;
-}
-
-.new-ideas p {
-  margin-bottom: 10px;
-  color: #939598;
+  border-bottom: 1px solid $line-color;
+  color: $main-color;
+  h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  p {
+    margin-bottom: 10px;
+    color: $p-color;
+  }
 }
 
 .idea-quality {
+  margin-left: 10px;
+  margin-top: 5px;
   display: inline-block;
-  vertical-align: super;
+  vertical-align: inherit;
   font-size: 20px;
+}
+
+.quality {
+  font-weight: $regular;
 }
 
 .footer {
@@ -133,49 +95,50 @@ span {
 .delete {
   display: inline-block;
   float: right;
-  height: 30px;
-  width: 30px;
-  vertical-align: top;
-  border-radius: 50%;
-  background: transparent;
-  border: 1px solid $secondary-color;
-  // background-image: url("../images/delete.svg");
-}
-
-.delete:hover {
-  background-color: $primary-background;
-  cursor: pointer;
-  // background-image: url("../images/delete-hover.svg");
+  @include button-styling;
+  &:hover {
+    @include button-hover;
+  }
 }
 
 .up {
-  height: 30px;
-  width: 30px;
-  background: transparent;
-  border-radius: 50%;
-  border: 1px solid $secondary-color;
-  // background-image: url("../images/upvote.svg");
-}
-
-.up:hover {
-  background-color: $primary-background;
-  cursor: pointer;
-  // background-image: url("../images/upvote-hover.svg");
+  vertical-align: super;
+  @include button-styling;
+  &:hover {
+    @include button-hover;
+  }
 }
 
 .down {
-  height: 30px;
-  width: 30px;
-  background: transparent;
-  border-radius: 50%;
-  border: 1px solid $secondary-color;
-  // background-image: url("../images/downvote.svg");
+  vertical-align: super;
+  @include button-styling;
+  &:hover {
+    @include button-hover;
+  }
 }
 
-.down:hover {
-  background-color: $primary-background;
-  cursor: pointer;
-  // background-image: url("../images/downvote-hover.svg");
+.complete {
+  @include complete-button;
+  &:hover {
+    @include button-hover;
+  }
+}
+
+.completed {
+  background-color: lighten($p-color, 30%);
+  h2,
+  p,
+  span,
+  .complete {
+    text-decoration: line-through;
+  }
+  button {
+    border: 1px solid $main-color;
+    &:hover {
+      cursor: default;
+      background-color: lighten($p-color, 30%);
+    }
+  }
 }
 
 
@@ -188,7 +151,6 @@ span {
     width: 50%;
   }
 }
-
 
 @media screen and (max-width: 500px){
   .inputs-go-here {
