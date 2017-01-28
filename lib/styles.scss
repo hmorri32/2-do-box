@@ -1,8 +1,5 @@
 @import 'variables';
 
-// Mixins are defined with an @.. so, @mixin whatever-name {}
-// p { @include whatever-name;}
-
 html, body {
   font-family: $main-font;
 }
