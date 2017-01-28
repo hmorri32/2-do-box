@@ -26,11 +26,16 @@ $main-color: #6D6E71;
 $line-color: #D1D3D4;
 $secondary-background: #FFFFFF;
 
+$main-font: "Open-Sans", sans-serif;
+$roboto-font: "Roboto Slab", serif;
+
+
 
 // SVG loader
 
 html, body {
-  font-family: 'Open-Sans', sans-serif; }
+  font-family: $main-font;
+}
 
 *:focus {
   /*outline: none;*/
@@ -39,7 +44,7 @@ html, body {
 h1,
 h2,
 span {
-  font-family: "Roboto Slab", serif;
+  font-family: $roboto-font;
   font-weight: 700;
 }
 
@@ -58,6 +63,8 @@ span {
   color: $secondary-color;
   font-size: 50px;
 }
+
+
 
 .input-h1 {
   text-align: center;
@@ -191,7 +198,6 @@ span {
   vertical-align: super;
   float: right;
   color: #6D6E71;
-
 }
 
 .complete:hover {
