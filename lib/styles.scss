@@ -1,11 +1,7 @@
+@import 'variables';
 
 // Mixins are defined with an @.. so, @mixin whatever-name {}
 // p { @include whatever-name;}
-
-
-@import 'variables';
-
-// SVG loader
 
 html, body {
   font-family: $main-font;
@@ -17,7 +13,6 @@ span {
   font-family: $roboto-font;
   font-weight: 700;
 }
-
 
 .inputs-go-here {
   width: 100%;
@@ -43,23 +38,18 @@ span {
 .inputs-go-here button,
 .inputs-go-here textarea,
 .ideas-go-here input {
- display: block;
- width: 75%;
- height: 20px;
- margin: auto;
- margin-bottom: 20px;
- border: 1px solid $line-color;
+  @include input-sizing;
 }
 
 #body-input {
- resize: none;
+  resize: none;
 }
 
 #save-button {
-  background-color: #00A79D;
+  background-color: $secondary-color;
   color: $secondary-background;
   &:hover {
-    background-color: #045E55;
+    background-color: $primary-color;
   }
   &:disabled {
     border: 1px solid $primary-color;
@@ -69,7 +59,7 @@ span {
 }
 
 #live-search-ideas {
- margin-top: 20px;
+  margin-top: 20px;
 }
 
 .new-ideas {
@@ -107,56 +97,32 @@ span {
 .delete {
   display: inline-block;
   float: right;
-  height: 30px;
-  width: 30px;
-  vertical-align: top;
-  border-radius: 50%;
-  background: transparent;
-  border: 1px solid $secondary-color;
+  @include button-styling;
   &:hover {
-    background-color: $primary-background;
-    cursor: pointer;
+    @include button-hover;
   }
 }
 
-
 .up {
-  height: 30px;
-  width: 30px;
-  background: transparent;
-  border-radius: 50%;
-  border: 1px solid $secondary-color;
   vertical-align: super;
+  @include button-styling;
   &:hover {
-    background-color: $primary-background;
-    cursor: pointer;
+    @include button-hover;
   }
 }
 
 .down {
-  height: 30px;
-  width: 30px;
-  background: transparent;
-  border-radius: 50%;
-  border: 1px solid $secondary-color;
   vertical-align: super;
+  @include button-styling;
   &:hover {
-    background-color: $primary-background;
-    cursor: pointer;
+    @include button-hover;
   }
 }
 
 .complete {
-  height: 30px;
-  background: transparent;
-  border-radius: 30%;
-  border: 1px solid $secondary-color;
-  vertical-align: super;
-  float: right;
-  color: $main-color;
+  @include complete-button;
   &:hover {
-    background-color: $primary-background;
-    cursor: pointer;
+    @include button-hover;
   }
 }
 
@@ -170,7 +136,6 @@ span {
     width: 50%;
   }
 }
-
 
 @media screen and (max-width: 500px){
   .inputs-go-here {
