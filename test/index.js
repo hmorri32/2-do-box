@@ -2,8 +2,7 @@ const assert    = require('assert');
 const webdriver = require('selenium-webdriver');
 const test      = require('selenium-webdriver/testing');
 
-
-describe('2-Do-box test bruu', function() {
+describe('2-Do-box test bruu', () => {
   let driver
   test.beforeEach(function(){
     this.timeout(10000);
@@ -18,7 +17,7 @@ describe('2-Do-box test bruu', function() {
   })
 
 
-  test.it('should allow me to add a title', function() {
+  test.it('should allow me to add a title', () => {
 
     const title = driver.findElement({id: "title-input"});
 
@@ -27,7 +26,7 @@ describe('2-Do-box test bruu', function() {
     });
   });
 
-  test.it('should allow me to add a task', function() {
+  test.it('should allow me to add a task', () => {
 
     const task = driver.findElement({id: "body-input"});
 
@@ -36,7 +35,7 @@ describe('2-Do-box test bruu', function() {
     });
   });
 
-  test.it('should allow me to add an idea to the DOM', function() {
+  test.it('should allow me to add an idea to the DOM', () => {
     const title  = driver.findElement({id: "title-input"});
     const task   = driver.findElement({id: "body-input"});
     const button = driver.findElement({id: "save-button"});
@@ -56,7 +55,7 @@ describe('2-Do-box test bruu', function() {
     });
   });
 
-  test.it('should allow me to delete an idea from the DOM', function(){
+  test.it('should allow me to delete an idea from the DOM', () => {
     const title     = driver.findElement({id: "title-input"});
     const task      = driver.findElement({id: "body-input"});
     const button    = driver.findElement({id: "save-button"});
@@ -81,7 +80,7 @@ describe('2-Do-box test bruu', function() {
     })
   })
 
-  test.it('new idea in DOM should have a default importance level of normal ', function() {
+  test.it('new idea in DOM should have a default importance level of normal ', () => {
     const title     = driver.findElement({id: "title-input"});
     const task      = driver.findElement({id: "body-input"});
     const button    = driver.findElement({id: "save-button"});
@@ -96,7 +95,7 @@ describe('2-Do-box test bruu', function() {
     })
   })
 
-  test.it('should allow me to increase an ideas importance with the up button', function() {
+  test.it('should allow me to increase an ideas importance with the up button', () => {
     const title     = driver.findElement({id: "title-input"});
     const task      = driver.findElement({id: "body-input"});
     const button    = driver.findElement({id: "save-button"});
@@ -118,7 +117,7 @@ describe('2-Do-box test bruu', function() {
 
   })
 
-  test.it('should allow me to search through ideas', function() {
+  test.it('should allow me to search through ideas', () => {
     const title     = driver.findElement({id: "title-input"});
     const task      = driver.findElement({id: "body-input"});
     const button    = driver.findElement({id: "save-button"});
