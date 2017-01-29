@@ -2,8 +2,8 @@
 // #045E55;
 // #00a79D;
 // #e5f3f2;
-// #6D6E71;
-// #939598;
+// #444444;
+// #626262;
 // #D1D3D4;
 // #FFFFFF;
 
@@ -11,9 +11,9 @@
 $primary-color: #045E55;
 $secondary-color: #00a79D;
 $primary-background: #e5f3f2;
-$main-color: #6D6E71;
+$main-color: #444444;
 $line-color: #D1D3D4;
-$p-color: #939598;
+$p-color: #626262;
 $secondary-background: #FFFFFF;
 
 // font styles
@@ -24,13 +24,12 @@ $roboto-font: "Roboto Slab", serif;
 $regular: 400;
 $bold: 700;
 
-
 @mixin input-sizing {
   display: block;
+  font-size: 1em;
   width: 75%;
-  height: 20px;
-  margin: auto;
-  margin-bottom: 20px;
+  height: 25px;
+  margin: 20px auto;
   border: 1px solid $line-color;
 }
 
