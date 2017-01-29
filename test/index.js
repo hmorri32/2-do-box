@@ -36,4 +36,20 @@ describe('2-Do-box test bruu', function() {
     });
   });
 
+  test.it('should allow me to add an idea to the dom', function() {
+    const title  = driver.findElement({id: "title-input"});
+    const task   = driver.findElement({id: "body-input"});
+    const button = driver.findElement({id: "save-button"});
+
+    title.sendKeys('this is a title')
+    task.sendKeys('this is a task')
+    button.click();
+
+    const ideaTitle = driver.findElement({className: "idea-title"})
+    ideaTitle.getText().then((value)=> {
+      assert.equal(value, "this is a title")
+    })
+
+  })
+
 });
