@@ -50,6 +50,11 @@ describe('2-Do-box test bruu', function() {
       assert.equal(value, "this is a title")
     })
 
+    const ideaBody = driver.findElement({className: "body"})
+    ideaBody.getText().then((value) => {
+      assert.equal(value, "this is a task")
+    })
+
   })
 
 });
