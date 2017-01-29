@@ -96,7 +96,29 @@ describe('2-Do-box test bruu', function() {
     })
   })
 
-  test.it.only('should allow me to search through ideas', function() {
+  test.it('should allow me to increase an ideas importance with the up button', function() {
+    const title     = driver.findElement({id: "title-input"});
+    const task      = driver.findElement({id: "body-input"});
+    const button    = driver.findElement({id: "save-button"});
+
+    title.sendKeys('this is a title')
+    task.sendKeys('this is a task')
+    button.click();
+
+    const quality = driver.findElement({className: "quality"})
+    quality.getText().then((value) => {
+      assert.equal(value, "normal");
+    })
+
+    const upBtn = driver.findElement({className: "up"})
+    upBtn.click();
+    quality.getText().then((value) => {
+      assert.equal(value, "high");
+    })
+
+  })
+
+  test.it('should allow me to search through ideas', function() {
     const title     = driver.findElement({id: "title-input"});
     const task      = driver.findElement({id: "body-input"});
     const button    = driver.findElement({id: "save-button"});
