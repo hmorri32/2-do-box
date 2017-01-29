@@ -36,7 +36,7 @@ describe('2-Do-box test bruu', function() {
     });
   });
 
-  test.it('should allow me to add an idea to the dom', function() {
+  test.it('should allow me to add an idea to the DOM', function() {
     const title  = driver.findElement({id: "title-input"});
     const task   = driver.findElement({id: "body-input"});
     const button = driver.findElement({id: "save-button"});
@@ -53,8 +53,64 @@ describe('2-Do-box test bruu', function() {
     const ideaBody = driver.findElement({className: "body"})
     ideaBody.getText().then((value) => {
       assert.equal(value, "this is a task")
+    });
+  });
+
+  test.it.only('should allow me to delete an idea from the DOM', function(){
+    const title     = driver.findElement({id: "title-input"});
+    const task      = driver.findElement({id: "body-input"});
+    const button    = driver.findElement({id: "save-button"});
+
+    title.sendKeys('this is a title')
+    task.sendKeys('this is a task')
+    button.click();
+
+    title.sendKeys('this is another title')
+    task.sendKeys('this is another task')
+    button.click();
+
+    driver.findElements({className: 'new-ideas'}).then((idea)=> {
+      assert.equal(idea.length, 2)
     })
+
+    const deleteBtn = driver.findElement({className: "delete"});
+    deleteBtn.click();
+
+    driver.findElements({className: 'new-ideas'}).then((idea)=> {
+      assert.equal(idea.length, 1)
+    })
+
+
+
 
   })
 
 });
+
+
+//   test.it("add two ideas, delete one, assert that there is one left", ()=>{
+//
+//     const title       = driver.findElement({name: "title"});
+//     const description = driver.findElement({name: "description"});
+//     const button      = driver.findElement({name: "button"});
+//
+//     title.sendKeys("this is a title");
+//     description.sendKeys('this is a description');
+//     button.click();
+//
+//     title.sendKeys("this is another title");
+//     description.sendKeys('this is another description');
+//     button.click();
+//
+//     driver.findElements({tagName: 'li'}).then((li)=> {
+//       assert.equal(li.length, 2)
+//     })
+//
+//     driver.findElement({className: "delete-idea"}).click();
+//
+//     driver.findElements({tagName: 'li'}).then((li)=> {
+//       assert.equal(li.length, 1)
+//     })
+//   })
+//
+// });
