@@ -120,18 +120,4 @@ describe('2-Do-box test bruu', function() {
     })
   })
 
-
-
-
 });
-
-// idea. is displayed
-
-// isdisplayed
-
-// ?send keys to search. check to see if card is displayed
-// assert equal displayed- true.
-
-
-
-//
