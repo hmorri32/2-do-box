@@ -14,22 +14,26 @@
     <section class="inputs-go-here">
       <div class="input-h1"><h1 tabindex="0">2DO<span id="header-box-text">box</span></h1>
       </div>
-      <div class="title-input">
+      <label for="title-input">
         <input type="text" id="title-input" placeholder="Title" maxlength="120">
-      </div>
-      <div class="body-input">
+      </label>
+      <label for="body-input">
         <textarea type="text" id="body-input" placeholder="Task" maxlength="120">
         </textarea>
-      </div>
+      </label>
       <div class = "character-count">
-      <div id ="title-input-feedback"> </div>
-      <div id ="body-input-feedback"></div>
-    </div>
-      <button type="button" id="save-button" disabled="true">save</button>
+        <div id ="title-input-feedback"> </div>
+        <div id ="body-input-feedback"></div>
+      </div>
+      <label for="save-button">
+        <button type="button" id="save-button" disabled="true">save</button>
+      </label>
     </section>
 
     <section class="ideas-go-here">
-      <input type="text" id="live-search-ideas" placeholder="Search">
+      <label for="live-search-ideas">
+        <input type="text" id="live-search-ideas" placeholder="Search">
+      </label>
       <section class="ideas">
       </section>
     </section>
