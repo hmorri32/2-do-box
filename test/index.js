@@ -96,4 +96,42 @@ describe('2-Do-box test bruu', function() {
     })
   })
 
+  test.it.only('should allow me to search through ideas', function() {
+    const title     = driver.findElement({id: "title-input"});
+    const task      = driver.findElement({id: "body-input"});
+    const button    = driver.findElement({id: "save-button"});
+    const search    = driver.findElement({id: "live-search-ideas"})
+    title.sendKeys('this is a title')
+    task.sendKeys('this is a task')
+    button.click();
+
+    search.sendKeys('this')
+
+    const idea = driver.findElement({className: 'new-ideas'})
+
+    idea.isDisplayed().then((displayed)=> {
+      assert.equal(displayed, true)
+    })
+
+    search.sendKeys('x')
+
+    idea.isDisplayed().then((displayed)=> {
+      assert.equal(displayed, false)
+    })
+  })
+
+
+
+
 });
+
+// idea. is displayed
+
+// isdisplayed
+
+// ?send keys to search. check to see if card is displayed
+// assert equal displayed- true.
+
+
+
+//
