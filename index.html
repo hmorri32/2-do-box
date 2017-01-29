@@ -14,13 +14,17 @@
     <section class="inputs-go-here">
       <div class="input-h1"><h1 tabindex="0">2DO<span id="header-box-text">box</span></h1>
       </div>
-      <label for="title-input">
-        <input type="text" id="title-input" placeholder="Title">
-      </label>
-      <label for="body-input">
-        <textarea type="text" id="body-input" placeholder="Task">
+      <div class="title-input">
+        <input type="text" id="title-input" placeholder="Title" maxlength="120">
+      </div>
+      <div class="body-input">
+        <textarea type="text" id="body-input" placeholder="Task" maxlength="120">
         </textarea>
-      </label>
+      </div>
+      <div class = "character-count">
+      <div id ="title-input-feedback"> </div>
+      <div id ="body-input-feedback"></div>
+    </div>
       <button type="button" id="save-button" disabled="true">save</button>
     </section>
 

@@ -14,7 +14,7 @@ span {
 
 .inputs-go-here {
   width: 100%;
-  height: 220px;
+  height: 250px;
   background-color: $primary-background;
   h1 {
     display: inline-block;
@@ -41,6 +41,21 @@ span {
 
 #body-input {
   resize: none;
+}
+
+.character-count {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+#body-input-feedback,
+#title-input-feedback {
+  text-align: center;
+  color: $main-color;
+  margin-left: 20px;
+  margin-right: 20px;
+
 }
 
 #save-button {
