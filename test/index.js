@@ -123,6 +123,7 @@ describe('2-Do-box test bruu', function() {
     const task      = driver.findElement({id: "body-input"});
     const button    = driver.findElement({id: "save-button"});
     const search    = driver.findElement({id: "live-search-ideas"})
+
     title.sendKeys('this is a title')
     task.sendKeys('this is a task')
     button.click();
