@@ -44,6 +44,16 @@ $bold: 700;
   color: $main-color;
 }
 
+@mixin new-ideas-styling {
+  display: block;
+  padding: 10px;
+  width: 75%;
+  margin: auto;
+  margin-bottom: 30px;
+  border-bottom: 1px solid $line-color;
+  color: $main-color;
+}
+
 @mixin button-hover {
   background-color: $primary-background;
   cursor: pointer;
