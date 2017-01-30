@@ -102,9 +102,20 @@ span {
 }
 
 .show-more {
-    padding: 10px 0;
-    text-align: center;
+  margin-bottom: 20px;
+  text-align: center;
+  .show-more-btn {
+    padding: 5px;
+    text-decoration: none;
+    background-color: $secondary-color;
+    color: $secondary-background;
+    &:hover {
+      background-color: $primary-color;
+    }
+  }
 }
+
+
 
 .new-ideas {
   @include new-ideas-styling;
