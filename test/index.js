@@ -55,6 +55,39 @@ describe('2-Do-box test bruu', () => {
     });
   });
 
+  test.it('ideas on DOM should persist after page reload', () => {
+    const title  = driver.findElement({id: "title-input"});
+    const task   = driver.findElement({id: "body-input"});
+    const button = driver.findElement({id: "save-button"});
+
+    title.sendKeys('this is a title')
+    task.sendKeys('this is a task')
+    button.click();
+
+    const ideaTitle = driver.findElement({className: "idea-title"})
+    ideaTitle.getText().then((value)=> {
+      assert.equal(value, "this is a title")
+    })
+
+    const ideaBody = driver.findElement({className: "body"})
+    ideaBody.getText().then((value) => {
+      assert.equal(value, "this is a task")
+    });
+
+    driver.navigate().refresh();
+
+    const idea = driver.findElement({className: "idea-title"})
+    idea.getText().then((value)=> {
+      assert.equal(value, "this is a title")
+    })
+
+    const body = driver.findElement({className: "body"})
+    body.getText().then((value) => {
+      assert.equal(value, "this is a task")
+    });
+
+  });
+
   test.it('should allow me to delete an idea from the DOM', () => {
     const title     = driver.findElement({id: "title-input"});
     const task      = driver.findElement({id: "body-input"});
@@ -74,6 +107,37 @@ describe('2-Do-box test bruu', () => {
 
     const deleteBtn = driver.findElement({className: "delete"});
     deleteBtn.click();
+
+    driver.findElements({className: 'new-ideas'}).then((idea)=> {
+      assert.equal(idea.length, 1)
+    })
+  })
+
+  test.it('deleted ideas should be removed from localStorage and not persist on refresh', () => {
+    const title     = driver.findElement({id: "title-input"});
+    const task      = driver.findElement({id: "body-input"});
+    const button    = driver.findElement({id: "save-button"});
+
+    title.sendKeys('this is a title')
+    task.sendKeys('this is a task')
+    button.click();
+
+    title.sendKeys('this is another title')
+    task.sendKeys('this is another task')
+    button.click();
+
+    driver.findElements({className: 'new-ideas'}).then((idea)=> {
+      assert.equal(idea.length, 2)
+    })
+
+    const deleteBtn = driver.findElement({className: "delete"});
+    deleteBtn.click();
+
+    driver.findElements({className: 'new-ideas'}).then((idea)=> {
+      assert.equal(idea.length, 1)
+    })
+
+    driver.navigate().refresh();
 
     driver.findElements({className: 'new-ideas'}).then((idea)=> {
       assert.equal(idea.length, 1)
@@ -113,6 +177,28 @@ describe('2-Do-box test bruu', () => {
     upBtn.click();
     quality.getText().then((value) => {
       assert.equal(value, "high");
+    })
+
+  })
+
+  test.it('should allow me to decrease an ideas importance with the down button', () => {
+    const title     = driver.findElement({id: "title-input"});
+    const task      = driver.findElement({id: "body-input"});
+    const button    = driver.findElement({id: "save-button"});
+
+    title.sendKeys('this is a title')
+    task.sendKeys('this is a task')
+    button.click();
+
+    const quality = driver.findElement({className: "quality"})
+    quality.getText().then((value) => {
+      assert.equal(value, "normal");
+    })
+
+    const downBtn = driver.findElement({className: "down"})
+    downBtn.click();
+    quality.getText().then((value) => {
+      assert.equal(value, "low");
     })
 
   })
