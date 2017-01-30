@@ -90,6 +90,22 @@ span {
   }
 }
 
+.hide-content {
+    overflow: hidden;
+    line-height: 1em;
+    height: 20em;
+}
+
+.showContent {
+    line-height: 1em;
+    height: auto;
+}
+
+.show-more {
+    padding: 10px 0;
+    text-align: center;
+}
+
 .new-ideas {
   @include new-ideas-styling;
   h2 {
