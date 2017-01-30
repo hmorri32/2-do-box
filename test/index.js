@@ -55,6 +55,39 @@ describe('2-Do-box test bruu', () => {
     });
   });
 
+  test.it('ideas on DOM should persist after page reload', () => {
+    const title  = driver.findElement({id: "title-input"});
+    const task   = driver.findElement({id: "body-input"});
+    const button = driver.findElement({id: "save-button"});
+
+    title.sendKeys('this is a title')
+    task.sendKeys('this is a task')
+    button.click();
+
+    const ideaTitle = driver.findElement({className: "idea-title"})
+    ideaTitle.getText().then((value)=> {
+      assert.equal(value, "this is a title")
+    })
+
+    const ideaBody = driver.findElement({className: "body"})
+    ideaBody.getText().then((value) => {
+      assert.equal(value, "this is a task")
+    });
+
+    driver.navigate().refresh();
+
+    const idea = driver.findElement({className: "idea-title"})
+    idea.getText().then((value)=> {
+      assert.equal(value, "this is a title")
+    })
+
+    const body = driver.findElement({className: "body"})
+    body.getText().then((value) => {
+      assert.equal(value, "this is a task")
+    });
+
+  });
+
   test.it('should allow me to delete an idea from the DOM', () => {
     const title     = driver.findElement({id: "title-input"});
     const task      = driver.findElement({id: "body-input"});
@@ -113,6 +146,28 @@ describe('2-Do-box test bruu', () => {
     upBtn.click();
     quality.getText().then((value) => {
       assert.equal(value, "high");
+    })
+
+  })
+
+  test.it('should allow me to decrease an ideas importance with the down button', () => {
+    const title     = driver.findElement({id: "title-input"});
+    const task      = driver.findElement({id: "body-input"});
+    const button    = driver.findElement({id: "save-button"});
+
+    title.sendKeys('this is a title')
+    task.sendKeys('this is a task')
+    button.click();
+
+    const quality = driver.findElement({className: "quality"})
+    quality.getText().then((value) => {
+      assert.equal(value, "normal");
+    })
+
+    const downBtn = driver.findElement({className: "down"})
+    downBtn.click();
+    quality.getText().then((value) => {
+      assert.equal(value, "low");
     })
 
   })
