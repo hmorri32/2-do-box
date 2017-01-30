@@ -35,8 +35,13 @@ span {
 .inputs-go-here input,
 .inputs-go-here button,
 .inputs-go-here textarea,
-.ideas-go-here input {
+.ideas-go-here input,
+ {
   @include input-sizing;
+}
+
+.quality-btns {
+  text-align: center;
 }
 
 #body-input {
@@ -58,7 +63,8 @@ span {
 
 }
 
-#save-button {
+#save-button,
+.category-btn {
   background-color: $secondary-color;
   color: $secondary-background;
   &:hover {
