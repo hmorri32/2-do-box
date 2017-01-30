@@ -113,6 +113,37 @@ describe('2-Do-box test bruu', () => {
     })
   })
 
+  test.it.only('deleted ideas should be removed from localStorage and not persist on refresh', () => {
+    const title     = driver.findElement({id: "title-input"});
+    const task      = driver.findElement({id: "body-input"});
+    const button    = driver.findElement({id: "save-button"});
+
+    title.sendKeys('this is a title')
+    task.sendKeys('this is a task')
+    button.click();
+
+    title.sendKeys('this is another title')
+    task.sendKeys('this is another task')
+    button.click();
+
+    driver.findElements({className: 'new-ideas'}).then((idea)=> {
+      assert.equal(idea.length, 2)
+    })
+
+    const deleteBtn = driver.findElement({className: "delete"});
+    deleteBtn.click();
+
+    driver.findElements({className: 'new-ideas'}).then((idea)=> {
+      assert.equal(idea.length, 1)
+    })
+
+    driver.navigate().refresh();
+    
+    driver.findElements({className: 'new-ideas'}).then((idea)=> {
+      assert.equal(idea.length, 1)
+    })
+  })
+
   test.it('new idea in DOM should have a default importance level of normal ', () => {
     const title     = driver.findElement({id: "title-input"});
     const task      = driver.findElement({id: "body-input"});
