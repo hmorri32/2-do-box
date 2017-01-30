@@ -35,7 +35,8 @@ span {
 .inputs-go-here input,
 .inputs-go-here button,
 .inputs-go-here textarea,
-.ideas-go-here input {
+.ideas-go-here input,
+#show-completed {
   @include input-sizing;
 }
 
@@ -73,6 +74,20 @@ span {
 
 #live-search-ideas {
   margin-top: 20px;
+}
+
+#show-completed {
+  margin-top: 20px;
+  background-color: $secondary-color;
+  color: $secondary-background;
+  &:hover {
+    background-color: $primary-color;
+  }
+  &:disabled {
+    border: 1px solid $primary-color;
+    color: $primary-color;
+    background-color: $secondary-background;
+  }
 }
 
 .new-ideas {
