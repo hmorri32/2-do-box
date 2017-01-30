@@ -93,7 +93,7 @@ span {
 .hide-content {
     overflow: hidden;
     line-height: 1em;
-    height: 43em;
+    max-height: 43em;
 }
 
 .showContent {
