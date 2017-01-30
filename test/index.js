@@ -113,7 +113,7 @@ describe('2-Do-box test bruu', () => {
     })
   })
 
-  test.it.only('deleted ideas should be removed from localStorage and not persist on refresh', () => {
+  test.it('deleted ideas should be removed from localStorage and not persist on refresh', () => {
     const title     = driver.findElement({id: "title-input"});
     const task      = driver.findElement({id: "body-input"});
     const button    = driver.findElement({id: "save-button"});
@@ -138,7 +138,7 @@ describe('2-Do-box test bruu', () => {
     })
 
     driver.navigate().refresh();
-    
+
     driver.findElements({className: 'new-ideas'}).then((idea)=> {
       assert.equal(idea.length, 1)
     })
