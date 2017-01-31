@@ -40,6 +40,10 @@ span {
   @include input-sizing;
 }
 
+.quality-btns {
+  text-align: center;
+}
+
 #body-input {
   resize: none;
 }
@@ -59,11 +63,12 @@ span {
 
 }
 
-#save-button {
-  background-color: $secondary-color;
+#save-button,
+.category-btn {
+  background-color: $primary-color;
   color: $secondary-background;
   &:hover {
-    background-color: $primary-color;
+    background-color: $secondary-color;
   }
   &:disabled {
     border: 1px solid $primary-color;

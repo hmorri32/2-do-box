@@ -228,4 +228,23 @@ describe('2-Do-box test bruu', () => {
     })
   })
 
+  // test.it('should allow me to sort by quality', () => {
+  //   const none  = driver.findElement({class: "none"});
+  //   const low   = driver.findElement({class: "low"});
+  //   const normal = driver.findElement({class: "normal"});
+  //   const high = driver.findElement({class: "high"});
+  //   const critical = driver.findElement({class: "critical"});
+  //
+  //   none.click();
+  //   low.click();
+  //   normal.click();
+  //   high.click();
+  //   critical.click();
+  //
+  //   const  = driver.findElement({className: "idea-title"})
+  //   ().then(()=> {
+  //     assert.equal()
+  //   })
+  // });
+
 });
