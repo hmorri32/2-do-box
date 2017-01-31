@@ -15,8 +15,9 @@
     <section class="inputs-go-here">
       <div class="input-h1">
         <h1 tabindex="0">
-          2DO
-          <span id="header-box-text">box</span>
+
+          2DO<span id="header-box-text">box</span>
+
         </h1>
       </div>
       <label for="title-input">
@@ -27,7 +28,7 @@
         </textarea>
       </label>
       <div class = "character-count">
-        <div id ="title-input-feedback"> </div>
+        <div id ="title-input-feedback"></div>
         <div id ="body-input-feedback"></div>
       </div>
       <label for="save-button">
@@ -36,6 +37,7 @@
     </section>
 
     <section class="ideas-go-here">
+      <button type="button" id="show-completed">Show Completed To-Do's</button>
       <label for="live-search-ideas">
         <input type="text" id="live-search-ideas" placeholder="Search">
       </label>
@@ -49,8 +51,11 @@
         <button class="category-btn" id="critical">critical</button>
       </label>
     </div>
-      <section class="ideas">
+      <section class="ideas hide-content">
       </section>
+      <div class="show-more">
+        <a class="show-more-btn" href="javascript:;">Show more</a>
+      </div>
     </section>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
