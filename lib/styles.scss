@@ -35,7 +35,8 @@ span {
 .inputs-go-here input,
 .inputs-go-here button,
 .inputs-go-here textarea,
-.ideas-go-here input {
+.ideas-go-here input,
+#show-completed {
   @include input-sizing;
 }
 
@@ -74,6 +75,47 @@ span {
 #live-search-ideas {
   margin-top: 20px;
 }
+
+#show-completed {
+  margin-top: 20px;
+  background-color: $secondary-color;
+  color: $secondary-background;
+  &:hover {
+    background-color: $primary-color;
+  }
+  &:disabled {
+    border: 1px solid $primary-color;
+    color: $primary-color;
+    background-color: $secondary-background;
+  }
+}
+
+.hide-content {
+    overflow: hidden;
+    line-height: 1em;
+    max-height: 43em;
+}
+
+.showContent {
+    line-height: 1em;
+    height: auto;
+}
+
+.show-more {
+  margin-bottom: 20px;
+  text-align: center;
+  .show-more-btn {
+    padding: 5px;
+    text-decoration: none;
+    background-color: $secondary-color;
+    color: $secondary-background;
+    &:hover {
+      background-color: $primary-color;
+    }
+  }
+}
+
+
 
 .new-ideas {
   @include new-ideas-styling;
@@ -158,7 +200,8 @@ span {
   #body-input,
   #save-button,
   #live-search-ideas,
-  .new-ideas {
+  .new-ideas,
+  #show-completed {
     width: 50%;
   }
 }
